@@ -1,0 +1,33 @@
+{
+  "name": "wordlens",
+  "version": "1.0.0",
+  "description": "consumes dictionary api",
+  "main": "app.js",
+  "scripts": {
+    "build": "",
+    "start-prod": "",
+    "start-dev": "webpack-dev-server --open --mode development --hot",
+    "test": "npm test"
+  },
+  "keywords": [
+    "node",
+    "reactjs",
+    "sass",
+    "html"
+  ],
+  "author": "sulenchy",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.3",
+    "html-webpack-plugin": "^5.5.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  }
+}
