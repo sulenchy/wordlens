@@ -24,10 +24,17 @@
     "@babel/preset-react": "^7.16.7",
     "babel-loader": "^8.2.3",
     "html-webpack-plugin": "^5.5.0",
+    "modern-normalize": "^1.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.4"
+  },
+  "devDependencies": {
+    "css-loader": "^6.6.0",
+    "sass": "^1.49.8",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.69.1"
   }
 }

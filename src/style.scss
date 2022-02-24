@@ -1,15 +1,18 @@
 // normalize css here
+@import '../node_modules/modern-normalize/modern-normalize.css';
 
-.flex-container {
+%flex-container {
     display: flex;
     width: 100%;
 }
 
 .header {
+    @extend %flex-container;
     height: '70px';
     justify-content: space-between;
 }
 
 .footer {
+    @extend %flex-container;
     justify-content: center;
 }
