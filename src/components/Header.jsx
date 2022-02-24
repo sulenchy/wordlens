@@ -1,24 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Logo from './Logo';
 import { DarkModeSwitch } from './svgs';
 
-const Header = () => {
-    const [isDarkMode, setIsDarkMode] = useState(false);
+const Header = ({ isDarkMode, setIsDarkMode }) => {
 
-    const handleClick = () => {
+    useEffect(() => {
         const root = document.body;
-        // toggle the background and color properties of the root here
         if (isDarkMode) {
             root.classList.add('darkMode');
         } else {
             root.classList.remove('darkMode');
         }
-        setIsDarkMode(!isDarkMode)
-    }
+    }, [isDarkMode]);
+
     return (
         <div className="header">
-            <Logo />
-            <DarkModeSwitch className="dark-mode-switch" isDarkMode={isDarkMode} onClick={handleClick} />
+            <Logo style={{ marginLeft: '29px' }} />
+            <DarkModeSwitch className="dark-mode-switch" isDarkMode={isDarkMode} onClick={() => setIsDarkMode(!isDarkMode)} />
         </div>
     )
 }

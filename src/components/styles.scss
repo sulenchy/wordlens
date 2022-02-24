@@ -1,5 +1,6 @@
 // normalize css here
 @use './Header.scss';
+@use './Footer.scss';
 @use './Logo.scss';
 
 @import '../../node_modules/modern-normalize/modern-normalize.css';
@@ -14,9 +15,4 @@ body {
     background-color: black;
     color: #91A2CB;
 }
-
-// .footer {
-//     @extend %flex-container;
-//     justify-content: center;
-// }
 
