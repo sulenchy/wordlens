@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header'
 import Footer from './Footer'
 
-import "../style.scss";
+import "./styles.scss";
 
 const app = () => {
     return (
