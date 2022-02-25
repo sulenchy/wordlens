@@ -10,8 +10,8 @@ const app = () => {
     return (
         <>
             <Header isDarkMode={ isDarkMode } setIsDarkMode={ setIsDarkMode } />
-            <Content />
-            <Footer />
+            <Content isDarkMode={ isDarkMode } />
+            <Footer isDarkMode={ isDarkMode } />
         </>
     )
 }

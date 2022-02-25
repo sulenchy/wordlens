@@ -3,14 +3,14 @@ import { Search, Speaker } from './svgs';
 
 
 
-const Content = () => {
+const Content = ({ isDarkMode }) => {
     return (
         <main className='content-wrapper'>
             <header className='content-header'>
                 <h1>Search<br />for any word.</h1>
             </header>
             <section className='display-wrapper'>
-                <form className="form">
+                <form className="form" style={ isDarkMode ? { borderColor: '#122239' } : {}}>
                     <div className='search-wrapper'>
                         <div className='search-icon'>
                             <Search style={{ height: '20px', width: '20px' }} />
@@ -19,7 +19,7 @@ const Content = () => {
                     </div>
                     <input type="submit" name="search-btn" value="Search" className='search-btn' />
                 </form>
-                <div className='display'>
+                <div className='display' style={ isDarkMode ? { borderColor: '#122239' } : {}}>
                     <h2>Hello</h2>
                     <div className='phonic-wrapper'>
                         <h5>/həˈləʊ/</h5>

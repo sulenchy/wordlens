@@ -2,9 +2,9 @@ import React from 'react';
 import Logo from './Logo';
 import { Facebook, Twitter, Instagram, LinkedIn, OverlappedEllipse, OverlappedMask, OverlappedRect } from './svgs';
 
-const Footer = () => {
+const Footer = ({ isDarkMode }) => {
     return (
-        <div className="footer">
+        <div className="footer" style={ isDarkMode ? { borderColor: '#122239' } : {} }>
             <div className="main-wrapper">
                 <div className='hide-in-small-scr' style={{ width: '30%' }}>
                     <div style={{ height: '200px' }}>
