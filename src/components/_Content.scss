@@ -1,0 +1,186 @@
+@use './Variables.scss';
+
+.content-wrapper {
+    @extend %flex-container;
+    flex-direction: column;
+    padding: 50px 27px 0 29px;
+
+    .content-header {
+        @extend %flex-container;
+
+        h1 {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 48px;
+            line-height: 58px;
+            margin: 0;
+        }
+    }
+
+    .display-wrapper {
+        padding-top: 23px;
+        .form {
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            padding: 5px;
+            width: 100%;
+
+            .search-wrapper {
+                border: 1px solid #E9ECF0;
+                box-sizing: border-box;
+                border-radius: 5px;
+                display: flex;
+                height: 50px;
+
+                .search-icon {
+                    width: 15%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .search-input {
+                    background: transparent;
+                    border: none;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 14px;
+                    height: 50px;
+                    line-height: 17px;
+                    outline: none;
+                    width: 85%;
+                }
+            }
+
+            .search-btn {
+                background: #000000;
+                border: none;
+                border-radius: 5px;
+                color: #fff;
+                cursor: pointer;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 18px;
+                height: 50px;
+                line-height: 22px;
+                margin-top: 18px;
+                width: 100%;
+            }
+        }
+
+        .display {
+            display: flex;
+            flex-direction: column;
+            margin-top: 52px;
+            margin-bottom: 70px;
+            width: 100%;
+
+            h2 {
+                font-weight: 600;
+                font-size: 36px;
+                line-height: 44px;
+                margin: 0;
+            }
+
+
+            .phonic-wrapper {
+                display: flex;
+                align-items: center;
+
+                h5 {
+                    margin: 4px 0;
+                    color: #8C98AD;
+                }
+
+                button {
+                    background: transparent;
+                    border: none;
+                    cursor: pointer;
+                }
+            }
+
+            .definitions-wrapper {
+                .origin {
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 17px;
+                    padding-top: 12px;
+                }
+
+                .definitions {
+                    .list {
+                        %exclamation {
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 14px;
+                            line-height: 17px;
+                        }
+
+                        .exclamation {
+                            @extend %exclamation;
+                        }
+                        .synonyms {
+                            @extend %exclamation;
+                        }
+
+                        .sentence {
+                            color: #8C98AD;
+                            font-style: italic;
+                            font-weight: normal;
+                            font-size: 14px;
+                            line-height: 17px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 660px) {
+    .content-wrapper {
+        .content-header {
+            h1 {
+                font-size: 96px;
+                line-height: 116px;
+            }
+        }
+        .display-wrapper {
+            .form {
+                align-items: center;
+                border: 1px solid #E9ECF0;
+                flex-direction: row;
+                justify-content: space-between;
+                height: 65px;
+
+                .search-wrapper {
+                    border: none;
+                    width: 90%;
+
+                    .search-icon {
+                        width: 5%;
+                    }
+
+                    .search-input {
+                        width: 95%;
+                    }
+                }
+
+                .search-btn {
+                    margin: 0;
+                    width: 124px;
+                }
+            }
+        }
+
+        .display {
+            border: 1px solid #E9ECF0;
+            border-radius: 5px;
+            padding: 50px;
+        }
+    }
+}

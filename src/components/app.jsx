@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from './Header'
 import Footer from './Footer'
+import Content from './Content';
 
 import "./styles.scss";
 
@@ -9,7 +10,7 @@ const app = () => {
     return (
         <>
             <Header isDarkMode={ isDarkMode } setIsDarkMode={ setIsDarkMode } />
-            <h2>Content shows here</h2>
+            <Content />
             <Footer />
         </>
     )
