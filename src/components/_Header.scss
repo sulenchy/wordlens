@@ -5,7 +5,10 @@
     height: 70px;
     justify-content: space-between;
     align-items: center;
+    background-color: #fff;
     border-bottom: 1px solid #E9ECF0;
+    position: fixed;
+    top: 0;
 
     .dark-mode-switch {
         cursor: pointer;

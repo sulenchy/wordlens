@@ -3,7 +3,7 @@
 .content-wrapper {
     @extend %flex-container;
     flex-direction: column;
-    padding: 50px 27px 0 29px;
+    padding: 120px 27px 0 29px;
 
     .content-header {
         @extend %flex-container;

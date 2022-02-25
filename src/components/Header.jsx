@@ -14,7 +14,7 @@ const Header = ({ isDarkMode, setIsDarkMode }) => {
     }, [isDarkMode]);
 
     return (
-        <div className="header" style={ isDarkMode ? { borderColor: '#122239' } : {}}>
+        <div className="header" style={ isDarkMode ? { borderColor: '#122239', background: '#0D1726' } : {}}>
             <Logo style={{ marginLeft: '29px' }} />
             <DarkModeSwitch className="dark-mode-switch" isDarkMode={isDarkMode} onClick={() => setIsDarkMode(!isDarkMode)} />
         </div>
