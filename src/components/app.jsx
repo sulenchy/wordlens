@@ -4,6 +4,7 @@ import Footer from './Footer'
 import Content from './Content';
 
 import "./styles.scss";
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const app = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);

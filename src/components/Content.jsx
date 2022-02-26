@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, Speaker } from './svgs';
+import NotFound from './404';
 import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import { getDefinitions } from '../api';
+
+
 
 const Content = ({ isDarkMode }) => {
     const [keyword, setKeyword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [definitions, setDefinitions] = useState(null)
 
     const handleChange = (event) => {
         setKeyword(event.target.value);
@@ -16,10 +20,16 @@ const Content = ({ isDarkMode }) => {
         if (keyword) {
             console.dir(keyword);
             setIsLoading(true);
-            setTimeout(() => {
-                setIsLoading(false);
-            }, [1000])
+            getDefinitions(keyword).then(response => {
+                setDefinitions(response);
+                setIsLoading(false)
+            })
         }
+    }
+
+    const handlePlayPhonetic = () => {
+        const audioElem = document.getElementById('audio-elem');
+        audioElem['play']();
     }
 
     return (
@@ -33,28 +43,42 @@ const Content = ({ isDarkMode }) => {
                         <div className='search-icon'>
                             <Search style={{ height: '20px', width: '20px' }} />
                         </div>
-                        <input type="search" placeholder='What would you like to search for?' name="search" className='search-input' onChange={ handleChange } />
+                        <input type="search" placeholder='What would you like to search for?' name="search" className='search-input' onChange={ handleChange } style={ isDarkMode ? { color: '#fff' } : {} } />
                     </div>
                     <input type="submit" value="Search" className='search-btn' onClick={ handleSearch } />
                 </form>
                 <div className='display' style={ isDarkMode ? { borderColor: '#122239' } : {}}>
-                    { isLoading ? <Skeleton width={100} height={30} className='pd-10' /> : <h2>Hello</h2> }
-                    { isLoading ? <Skeleton width={70} height={10} /> : <div className='phonic-wrapper'>
-                        <h5>/həˈləʊ/</h5>
-                        <button type="submit">
-                            <Speaker style={{ marginLeft: '5px' }} />
-                        </button>
-                    </div> }
-                    <div className='definitions-wrapper'>
-                        { isLoading ? <Skeleton /> : <p className='origin'>origin: "early 19th century: variant of earlier hollo ; related to holla.",</p> }
-                        <ol className='definitions'>
-                            { isLoading ? <Skeleton count={3} /> : <li className='list'>
-                                <p className='exclamation'>(exclamation) used as a greeting or to begin a phone conversation.</p>
-                                <p className='sentence'>sentence: “hello there, Katie!"</p>
-                                <p className='synonyms'>Synonyms: “”</p>
-                            </li> }
-                        </ol>
-                    </div>
+                    {
+                        definitions === null && <h4>Gbemi trabaye !!!!</h4>
+                    }
+                    {
+                        definitions && definitions.status === 200 &&
+                        <>
+                            { isLoading ? <Skeleton width={100} height={30} className='pd-10' /> : <h2>{ definitions.data[0].word }</h2> }
+                            { isLoading ? <Skeleton width={70} height={10} /> : <div className='phonic-wrapper'>
+                                <h5>{ definitions.data[0].phonetics[0].text }</h5>
+                                <audio id="audio-elem" preload='none'>
+                                    <source src={ definitions.data[0].phonetics[0].audio } type='audio/mpeg' />
+                                </audio>
+                                <button id="audio-control" onClick={ handlePlayPhonetic } type="submit">
+                                    <Speaker style={{ marginLeft: '5px' }} />
+                                </button>
+                            </div> }
+                            <div className='definitions-wrapper'>
+                                { isLoading ? <Skeleton /> : <p className='origin'>origin: "early 19th century: variant of earlier hollo ; related to holla.",</p> }
+                                <ol className='definitions'>
+                                    { isLoading ? <Skeleton count={3} /> : definitions.data[0].meanings.map((meaning, index) => (<li key={index} className='list'>
+                                        <p className='exclamation'>{`(${meaning.partOfSpeech}) ${meaning.definitions[0].definition}`}</p>
+                                        <p className='sentence'>sentence: “hello there, Katie!"</p>
+                                        <p className='synonyms'>Synonyms: “”</p>
+                                    </li>)) }
+                                </ol>
+                            </div>
+                        </>
+                    }
+                    {
+                        definitions && definitions.status === 404 && <NotFound />
+                    }
                 </div>
             </section>
         </main>

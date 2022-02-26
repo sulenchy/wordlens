@@ -4,7 +4,7 @@
   "description": "consumes dictionary api",
   "main": "app.js",
   "scripts": {
-    "build": "",
+    "build": "webpack --mode production",
     "start-prod": "",
     "start-dev": "webpack-dev-server --open --mode development --hot",
     "test": "npm test"
@@ -13,7 +13,10 @@
     "node",
     "reactjs",
     "sass",
-    "html"
+    "html",
+    "axios",
+    "webpack",
+    "babel"
   ],
   "author": "sulenchy",
   "license": "ISC",
