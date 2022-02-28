@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Search, Speaker } from './svgs';
 import NotFound from './404';
 import Skeleton from 'react-loading-skeleton'
@@ -10,6 +10,7 @@ const Content = ({ isDarkMode }) => {
     const [keyword, setKeyword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [definitions, setDefinitions] = useState(null)
+    const displayRef = useRef(null);
 
     const handleChange = (event) => {
         setKeyword(event.target.value);
@@ -32,25 +33,30 @@ const Content = ({ isDarkMode }) => {
         audioElem['play']();
     }
 
+    useEffect(() => {
+        if (!isLoading && definitions && definitions.status == 200) {
+            displayRef.current.style.border = isDarkMode ? '1px solid #122239' : '1px solid #E9ECF0';
+        } else {
+            displayRef.current.style.border = 'none';
+        }
+    }, [isLoading, isDarkMode])
+
     return (
         <main className='content-wrapper'>
             <header className='content-header'>
                 <h1>Search<br />for any word.</h1>
             </header>
             <section className='display-wrapper'>
-                <form className="form" style={ isDarkMode ? { borderColor: '#122239' } : {}}>
+                <form className="form" aria-label='search-form'  style={ isDarkMode ? { borderColor: '#122239' } : {}}>
                     <div className='search-wrapper'>
                         <div className='search-icon'>
                             <Search style={{ height: '20px', width: '20px' }} />
                         </div>
-                        <input type="search" placeholder='What would you like to search for?' name="search" className='search-input' onChange={ handleChange } style={ isDarkMode ? { color: '#fff' } : {} } />
+                        <input aria-label='search-box' type="search" placeholder='What would you like to search for?' name="search" className='search-input' onChange={ handleChange } style={ isDarkMode ? { color: '#fff' } : {} } />
                     </div>
-                    <input type="submit" value="Search" className='search-btn' onClick={ handleSearch } />
+                    <input aria-label='search-button' type="submit" value="Search" className='search-btn' onClick={ handleSearch } />
                 </form>
-                <div className='display' style={ isDarkMode ? { borderColor: '#122239' } : {}}>
-                    {
-                        definitions === null && <h4>Gbemi trabaye !!!!</h4>
-                    }
+                <div ref={ displayRef } className='display'>
                     {
                         definitions && definitions.status === 200 &&
                         <>
@@ -77,7 +83,7 @@ const Content = ({ isDarkMode }) => {
                         </>
                     }
                     {
-                        definitions && definitions.status === 404 && <NotFound />
+                        definitions && definitions.status === 404 && <NotFound setDefinitions={ setDefinitions } setKeyword={ setKeyword } />
                     }
                 </div>
             </section>
