@@ -5,7 +5,7 @@ export const getDefinitions = async(keyword) => {
     try {
         const {data, status} = await axios.get(`${url}/${keyword}`);
         return { data, status };
-    } catch ({ message, response: { status }}) {
+    } catch ({ response: { status = '404', data: { message } = {} } = {} }) {
         return { message, status }
     }
 }

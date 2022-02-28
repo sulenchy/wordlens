@@ -21,7 +21,7 @@ const Footer = ({ isDarkMode }) => {
                     <a className="link" href="#" target="_blank">Visit API documentation</a>
                 </div>
                 <div className='hide-in-small-scr' style={{ width: '30%' }}>
-                    <div style={{ display: 'flex', justifyContent: 'flex-end', height: '200px', paddingTop: '20px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'flex-end', height: '200px', paddingTop: '20px', paddingRight: '40px' }}>
                         <OverlappedRect />
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'center', height: '200px' }}>

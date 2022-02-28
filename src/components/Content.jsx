@@ -19,7 +19,6 @@ const Content = ({ isDarkMode }) => {
     const handleSearch = (event) => {
         event.preventDefault();
         if (keyword) {
-            console.dir(keyword);
             setIsLoading(true);
             getDefinitions(keyword).then(response => {
                 setDefinitions(response);
@@ -62,9 +61,9 @@ const Content = ({ isDarkMode }) => {
                         <>
                             { isLoading ? <Skeleton width={100} height={30} className='pd-10' /> : <h2>{ definitions.data[0].word }</h2> }
                             { isLoading ? <Skeleton width={70} height={10} /> : <div className='phonic-wrapper'>
-                                <h5>{ definitions.data[0].phonetics[0].text }</h5>
+                                <h5>{ definitions.data[0]?.phonetics[0]?.text }</h5>
                                 <audio id="audio-elem" preload='none'>
-                                    <source src={ definitions.data[0].phonetics[0].audio } type='audio/mpeg' />
+                                    <source src={ definitions.data[0]?.phonetics[0]?.audio } type='audio/mpeg' />
                                 </audio>
                                 <button id="audio-control" onClick={ handlePlayPhonetic } type="submit">
                                     <Speaker style={{ marginLeft: '5px' }} />
@@ -74,16 +73,16 @@ const Content = ({ isDarkMode }) => {
                                 { isLoading ? <Skeleton /> : <p className='origin'>origin: "early 19th century: variant of earlier hollo ; related to holla.",</p> }
                                 <ol className='definitions'>
                                     { isLoading ? <Skeleton count={3} /> : definitions.data[0].meanings.map((meaning, index) => (<li key={index} className='list'>
-                                        <p className='exclamation'>{`(${meaning.partOfSpeech}) ${meaning.definitions[0].definition}`}</p>
-                                        <p className='sentence'>sentence: “hello there, Katie!"</p>
-                                        <p className='synonyms'>Synonyms: “”</p>
+                                        <p className='exclamation'>{`(${meaning.partOfSpeech}) ${meaning.definitions[0]?.definition}`}</p>
+                                        <p className='sentence'>Sentence: {meaning.definitions[0]?.sentence ? meaning.definitions[0].sentence : '""'}</p>
+                                        <p className='synonyms'>{`Synonyms: ${meaning.definitions[0]?.synonyms}`}</p>
                                     </li>)) }
                                 </ol>
                             </div>
                         </>
                     }
                     {
-                        definitions && definitions.status === 404 && <NotFound setDefinitions={ setDefinitions } setKeyword={ setKeyword } />
+                        definitions && definitions.status === 404 && <NotFound setDefinitions={ setDefinitions } message={ definitions.message } />
                     }
                 </div>
             </section>
