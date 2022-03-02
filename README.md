@@ -1,7 +1,7 @@
 # wordlens
-![Page_Screenshot]['./public/page_example.png]
+![Page_Screenshot](./public/page_example.png)
 
-A frontend app designed inline with the figma design designed by @wiz. The app consumes `https://api.dictionaryapi.dev/api/v2/entries/en/${word}` api endpoint. It is 90% completed.
+A frontend app designed inline with the figma design designed by @wiztemple. The app consumes `https://api.dictionaryapi.dev/api/v2/entries/en/${word}` api endpoint. It is 90% completed.
 
 # Getting started
 
@@ -11,12 +11,12 @@ A frontend app designed inline with the figma design designed by @wiz. The app c
 
 or 
 
-You can access hosted version at 
+You can access hosted version at https://wordlens.web.app/
 
 # Available Scripts
 In the project directory, you can run:
 
-## npm start
+## npm run start-dev
 
 Runs the app in the development mode.
 Open http://localhost:8081 to view it in the browser.
