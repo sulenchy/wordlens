@@ -1,7 +1,7 @@
 # wordlens
 ![Page_Screenshot](./public/page_example.png)
 
-A frontend app designed inline with the figma design designed by @wiztemple. The app consumes `https://api.dictionaryapi.dev/api/v2/entries/en/${word}` api endpoint. It is 90% completed.
+A frontend app designed inline with the figma design designed by @wiztemple. The app consumes `https://api.dictionaryapi.dev/api/v2/entries/en` api endpoint. It is 90% completed.
 
 # Getting started
 
