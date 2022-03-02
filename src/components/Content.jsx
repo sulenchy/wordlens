@@ -70,7 +70,7 @@ const Content = ({ isDarkMode }) => {
                                 </button>
                             </div> }
                             <div className='definitions-wrapper'>
-                                { isLoading ? <Skeleton /> : <p className='origin'>origin: "early 19th century: variant of earlier hollo ; related to holla.",</p> }
+                                {/* { isLoading ? <Skeleton /> : <p className='origin'>origin: "early 19th century: variant of earlier hollo ; related to holla.",</p> } */}
                                 <ol className='definitions'>
                                     { isLoading ? <Skeleton count={3} /> : definitions.data[0].meanings.map((meaning, index) => (<li key={index} className='list'>
                                         <p className='exclamation'>{`(${meaning.partOfSpeech}) ${meaning.definitions[0]?.definition}`}</p>
